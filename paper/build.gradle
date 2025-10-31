@@ -7,7 +7,8 @@ dependencies {
    // common lib deps
    implementation project(':common')
    implementation 'com.eclipsesource.minimal-json:minimal-json:0.9.5'
-   implementation 'me.carleslc.Simple-YAML:Simple-Yaml:1.8'
+   // Simple-YAML is hosted on GitHub; resolve via JitPack coordinates
+   implementation 'com.github.carleslc:Simple-YAML:1.8'
 
    // graal deps
    implementation "org.graalvm.js:js:${graalVersion}"
@@ -15,7 +16,9 @@ dependencies {
    implementation "org.graalvm.truffle:truffle-api:${graalVersion}"
 
    // platform-specific deps
-   compileOnly "org.spigotmc:spigot-api:1.8-R0.1-SNAPSHOT"
+   // Use Paper API instead of the ancient Spigot snapshot.
+   // Set `paperApiVersion` in gradle.properties (e.g. paperApiVersion=1.20.1-R0.1-SNAPSHOT)
+   compileOnly "io.papermc.paper:paper-api:${paperApiVersion}"
 }
 
 jar {
@@ -37,9 +40,10 @@ processResources {
 
 repositories {
    mavenCentral()
+   // JitPack for Simple-YAML
    maven { url = 'https://jitpack.io' }
    maven { url = 'https://oss.sonatype.org/content/repositories/central' }
    maven { url = 'https://oss.sonatype.org/content/repositories/snapshots' }
-   maven { url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/' }
+   maven { url = "https://repo.papermc.io/repository/maven-public/" }
 }
 

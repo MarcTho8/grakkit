@@ -6,10 +6,9 @@ plugins {
 dependencies {
    // common lib deps
    implementation 'com.eclipsesource.minimal-json:minimal-json:0.9.5'
-   implementation 'me.carleslc.Simple-YAML:Simple-Yaml:1.8'
+   // Simple-YAML is hosted on GitHub; resolve via JitPack coordinates
+   implementation 'com.github.carleslc:Simple-YAML:1.8'
 
-   implementation "org.graalvm.polyglot:polyglot:${graalVersion}"
-   implementation "org.graalvm.polyglot:js:${graalVersion}"
    implementation "org.graalvm.sdk:graal-sdk:${graalVersion}" // get both drunk and high
 }
 
@@ -25,5 +24,6 @@ shadowJar {
 
 repositories {
    mavenCentral()
+   // JitPack hosts the Simple-YAML GitHub project
    maven { url = 'https://jitpack.io' }
 }
