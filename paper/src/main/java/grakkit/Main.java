@@ -12,6 +12,9 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import org.graalvm.polyglot.Value;
 
+// import grakkit shit or sm
+import grakkit.Grakkit;
+
 public class Main extends JavaPlugin {
 
    /** A list of all registered commands. */

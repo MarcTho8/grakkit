@@ -25,10 +25,19 @@ jar {
    archiveBaseName.set('grakkit')
    archiveClassifier.set('paper')
    archiveVersion.set(project.property('grakkitVersion'))
+   // include compiled classes from the common subproject so runtime classes like
+   // grakkit.Loader are available inside the paper plugin jar.
+   from(project(':common').sourceSets.main.output) {
+      include '**/*.class'
+   }
 }
 
 shadowJar {
    mergeServiceFiles()
+   // also include common compiled output into the shadowed jar
+   from(project(':common').sourceSets.main.output) {
+      include '**/*'
+   }
 }
 
 processResources {
